@@ -5,13 +5,15 @@ import { VStack } from "@chakra-ui/layout";
 import { useToast } from "@chakra-ui/toast";
 import axios from "axios";
 import { useState } from "react";
-// import { useHistory } from "react-router";
+// import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
     const [show, setShow] = useState(false);
     const handleClick = () => setShow(!show);
     const toast = useToast();
     // const history = useHistory();
+    const navigate = useNavigate();
 
     const [name, setName] = useState();
     const [email, setEmail] = useState();
@@ -70,7 +72,8 @@ const Signup = () => {
             });
             localStorage.setItem("userInfo", JSON.stringify(data));
             setPicLoading(false);
-            history.push("/chats");
+            // history.push("/chats");
+            navigate("/chats");
         } catch (error) {
       toast({
                 title: "Error Occured!",
@@ -100,9 +103,9 @@ const Signup = () => {
         if (pics.type === "image/jpeg" || pics.type === "image/png") {
             const data = new FormData();
             data.append("file", pics);
-            data.append("upload_preset", "chat-app");
-            data.append("cloud_name", "piyushproj");
-            fetch("https://api.cloudinary.com/v1_1/piyushproj/image/upload", {
+            data.append("upload_preset", "MERN_Chat_App");
+            data.append("cloud_name", "dpe0omwkc");
+            fetch("https://api.cloudinary.com/v1_1/dpe0omwkc/image/upload", {
                 method: "post",
                 body: data,
             })
