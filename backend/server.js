@@ -7,6 +7,7 @@ const app = express()
 const { chats } = require("./data/data")
 const connectDB = require("./config/db")
 const userRoutes = require("./route/userRoutes")
+const chatRoutes = require("./route/chatRoutes")
 const { notFound, errorHandler } = require("./middleware/errorMiddleware");
 connectDB()
 
@@ -27,7 +28,10 @@ app.get('/api/chat/:id', (req, res) => {
     res.send(singleChat)
 })
 
+// User related API
 app.use('/api/user',userRoutes)
+// Chat related API
+app.use('/api/chat',chatRoutes)
 
 // Error Handling middlewares
 app.use(notFound);
