@@ -27,18 +27,11 @@ app.get('/api/chat/:id', (req, res) => {
     res.send(singleChat)
 })
 
-
-
 app.use('/api/user',userRoutes)
-
-
-
 
 // Error Handling middlewares
 app.use(notFound);
 app.use(errorHandler);
-
-
 
 
 const PORT = process.env.PORT ;
