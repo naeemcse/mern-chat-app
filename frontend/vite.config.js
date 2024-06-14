@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://localhost:5050/api',
+        target: 'https://mern-chat-app-api-gamma.vercel.app/api',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ''),
       },
@@ -15,5 +15,5 @@ export default defineConfig({
   },
 })
 
-
+// localhost:5050 is replaced with deploy url
 //ref for proxi: https://medium.com/@pavitramodi.it/bridging-react-and-node-with-vites-proxy-configuration-7281bbe23169
